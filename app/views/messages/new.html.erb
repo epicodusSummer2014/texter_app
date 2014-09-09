@@ -1,0 +1,11 @@
+<%= form_for @message do |f| %>
+  <%= f.label :from %>
+  <%= f.text_field :from %>
+  <%= f.label :to %>
+  <%= f.text_field :to %>
+  <%= f.label "Message" %>
+  <%= f.text_field :body %>
+  <%= f.label "save contact?" %>
+  <%= f.check_box :saved %>
+  <%= f.submit %>
+<% end %>

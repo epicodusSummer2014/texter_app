@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def new
     @message = Message.new
@@ -11,13 +12,17 @@ class MessagesController < ApplicationController
     else
       flash[:alert] = "Message Not Sent"
     end
-    redirect_to root_path
+    if params[:message][:saved] == "1"
+      redirect_to new_message_contact_path(@message)
+    else
+      redirect_to root_path
+    end
   end
 
 private
 
   def message_params
-    params.require(:message).permit(:to, :from, :body)
+    params.require(:message).permit(:to, :from, :body, :saved )
   end
 
 end

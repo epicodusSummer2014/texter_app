@@ -2,8 +2,9 @@
   <%= f.label :from %>
   <%= f.text_field :from %>
   <%= f.label :to %>
-  <%= f.text_field :to %>
-  <%= f.label "Message", :id => "body" %>
+  <%= f.text_field :to, :value => @contact.phone_number %>
+  <%= f.label "Message" %>
   <%= f.text_field :body %>
+
   <%= f.submit %>
 <% end %>
